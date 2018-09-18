@@ -1,0 +1,3 @@
+[submodule "siji"]
+	path = siji
+	url = https://github.com/stark/siji
