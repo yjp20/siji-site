@@ -1,13 +1,12 @@
 function render(scale) {
-  $canvasses = document.getElementsByClassName('thing');
-  for (var i=0; i<$canvasses.length; i++) {
+  $canvases = document.getElementsByClassName('thing');
+  for (var i=0; i<$canvases.length; i++) {
     var width = 12;
-    var character = JSON.parse($canvasses[i].dataset.character);
-    var context = $canvasses[i].getContext("2d");
-    context.clearRect(0, 0, $canvasses[i].width, $canvasses[i].height);
-    $canvasses[i].width = scale*width;
-    $canvasses[i].height = scale*width;
-
+    var character = JSON.parse($canvases[i].dataset.character);
+    var context = $canvases[i].getContext("2d");
+    context.clearRect(0, 0, $canvases[i].width, $canvases[i].height);
+    $canvases[i].width = scale*width;
+    $canvases[i].height = scale*width;
 
     var imagedata = context.createImageData(width*scale, width*scale);
 
@@ -31,8 +30,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener('click', function (e) {
   var textArea = document.createElement("textarea");
-  console.log(e.target.dataset.character);
-  console.log(e.target);
+  if (!e.target.classList.contains("thing")) return;
+
   textArea.value = String.fromCharCode(parseInt(JSON.parse(e.target.dataset.character).ENCODING));
   e.target.parentElement.appendChild(textArea);
   textArea.focus();
